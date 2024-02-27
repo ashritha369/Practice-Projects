@@ -56,7 +56,23 @@ app.put("/editUser/:id", (request, response) => {
     .then((users) => response.json(users))
     .catch((err) => response.json(err));
 });
+// ------------------DELETE ENDPOINT-----------
 
+// ENDPOINT 5: DELETE USER Which has  USER BY ID (to Delete details in ui for particular user first we need to  delete request details by their  id)
+app.delete("/deleteUser/:id", (request, response) => {
+  const id = request.params.id; //from client
+  const _id = id; //but in database we have _id ,so assign that 'id' from client to '_id' variable of database and search
+  UserModel.findByIdAndDelete(
+    { _id },
+    {
+      name: request.body.name,
+      email: request.body.email,
+      age: request.body.age,
+    }
+  )
+    .then((users) => response.json(users))
+    .catch((err) => response.json(err));
+});
 // simpleMernCRUD is database name
 app.listen(5000, () => {
   console.log(`Server is Running at ${5000} `);
