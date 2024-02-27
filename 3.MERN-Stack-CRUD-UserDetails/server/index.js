@@ -25,6 +25,14 @@ app.post("/createUser", (request, response) => {
     .then((users) => response.json(users))
     .catch((err) => response.status(400).json(err));
 });
+
+//  ENDPOINT 2: GET USERS
+app.get("/", (request, response) => {
+  UserModel.find(request.body)
+    .then((users) => response.json(users))
+    .catch((err) => response.json(err));
+});
+
 // simpleMernCRUD is database name
 app.listen(5000, () => {
   console.log(`Server is Running at ${5000} `);
