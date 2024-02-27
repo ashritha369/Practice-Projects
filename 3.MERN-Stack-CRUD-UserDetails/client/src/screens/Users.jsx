@@ -25,8 +25,11 @@ const Users = () => {
   const handleDelete = (ID) => {
     // SEND DELETE TO ENDPOINT 5: /deleteUser
     axios
-      .delete("/deleteUser/" + ID)
-      .then((response) => console.log(response))
+      .delete("http://localhost:5000/deleteUser/" + ID)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
       .catch((err) => console.log(err));
   };
   return (
