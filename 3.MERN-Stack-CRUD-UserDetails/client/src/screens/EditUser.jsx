@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const EditUsers = () => {
+  const { id } = useParams();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [age, setAge] = useState();
+  const navigate = useNavigate();
+  // first we need to get user by id and display that user's detail in edit UI, the we need to post
+  useEffect(() => {
+    axios
+      .put("http://localhost:5000/" + id)
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  }, []);
   const handleUpdate = (e) => {
     console.log(e);
   };

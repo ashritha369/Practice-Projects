@@ -9,6 +9,16 @@ const Users = () => {
     axios
       .get("http://localhost:5000")
       .then((result) => setUsers(result.data))
+      /*BELOW DETAILS COMES FROM DATABASE VIA SERVER TO CLIENT
+      data=
+      {
+        age: 4234,
+        email: "god@gmail.com",
+        name: "god",
+        __v: 0,
+        _id: "65dd83e516793ef7cf96928d"
+      }
+      */
       .catch((err) => console.log(err));
   }, []);
   return (
@@ -34,7 +44,8 @@ const Users = () => {
                   <td>{user.email}</td>
                   <td>{user.age}</td>
                   <td>
-                    <Link to="/edit" className="btn btn-success">
+                    {/* change route path too for edit */}
+                    <Link to={`/edit/${user._id}`} className="btn btn-success">
                       Edit
                     </Link>
                     <button className="btn btn-sm btn-danger">Delete</button>
