@@ -12,7 +12,7 @@ const EditUsers = () => {
   useEffect(() => {
     // ENDPOINT 3: GET USER BY ID
     axios
-      .put("http://localhost:5000/getUser" + id)
+      .get("http://localhost:5000/getUser/" + id)
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   }, []);
