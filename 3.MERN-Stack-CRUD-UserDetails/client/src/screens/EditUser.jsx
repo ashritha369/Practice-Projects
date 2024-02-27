@@ -10,8 +10,9 @@ const EditUsers = () => {
   const navigate = useNavigate();
   // first we need to get user by id and display that user's detail in edit UI, the we need to post
   useEffect(() => {
+    // ENDPOINT 3: GET USER BY ID
     axios
-      .put("http://localhost:5000/" + id)
+      .put("http://localhost:5000/getUser" + id)
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   }, []);
