@@ -27,8 +27,8 @@ app.post("/createUser", (request, response) => {
 });
 
 //  ENDPOINT 2: GET USERS
-app.get("/", ({}) => {
-  UserModel.find(request.body)
+app.get("/", (request, response) => {
+  UserModel.find()
     .then((users) => response.json(users))
     .catch((err) => response.json(err));
 });
@@ -38,6 +38,21 @@ app.get("/getUser/:id", (request, response) => {
   const id = request.params.id; //from client
   const _id = id; //but in database we have _id ,so assign that 'id' from client to '_id' variable of database and search
   UserModel.findById({ _id })
+    .then((users) => response.json(users))
+    .catch((err) => response.json(err));
+});
+// ENDPOINT 4: EDIT USER Which has  USER BY ID (to edit details in ui for particular user first we need to get put request details by their  id)
+app.put("/editUser/:id", (request, response) => {
+  const id = request.params.id; //from client
+  const _id = id; //but in database we have _id ,so assign that 'id' from client to '_id' variable of database and search
+  UserModel.findByIdAndUpdate(
+    { _id },
+    {
+      name: request.body.name,
+      email: request.body.email,
+      age: request.body.age,
+    }
+  )
     .then((users) => response.json(users))
     .catch((err) => response.json(err));
 });
