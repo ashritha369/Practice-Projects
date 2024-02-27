@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateUsers = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [age, setAge] = useState();
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
-    console.log(e);
+    e.preventDefault();
+    //  SEND TO ENDPOINT 1: CREATE USER '/createUser'
+    axios
+      .post("http://localhost:5000/createUser", { name, email, age })
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
