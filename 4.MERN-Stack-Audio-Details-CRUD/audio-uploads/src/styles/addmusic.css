@@ -1,0 +1,130 @@
+/* ADD MUSIC CSS */
+.singleMusicData-Container {
+  margin: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.labelNames {
+  margin: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.input-div {
+  margin: 10px;
+}
+
+.input-div input[type="text"],
+.input-div input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.metadata-div {
+  text-align: center;
+  background-color: #53049c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.submit-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #53049c;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transform transition */
+}
+
+.submit-button:hover {
+  background-color: #6d0fc7;
+  transform: scale(1.1); /* Zoom in on hover */
+}
+
+.submit-button:active {
+  transform: scale(0.9); /* Zoom out when clicked */
+}
+/* AUDIO UPLOAD.JSX */
+.row {
+  display: flex;
+  gap: 5px;
+  background-color: #f8f2fe;
+  border: 2px solid purple;
+}
+.upload,
+.delete {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+/* ALIGNING REF AND PLAYLISTS */
+.audio-uploads-container {
+  background-color: rgb(248, 248, 198);
+}
+.reference-music {
+  border: 5px solid #872c05;
+  margin: 10px;
+  padding: 20px;
+}
+.playlist-musics {
+  border: 5px solid #056c11;
+  margin: 10px;
+  padding: 20px;
+}
+/* TOGGLING EFFECT  */
+.view-upload-toggle-div {
+  color: white;
+  height: 50px;
+  line-height: 50px; /* For vertical centering of text */
+  text-align: center;
+  font-family: "Lucida Sans";
+  font-size: larger;
+  background-color: rgb(100, 5, 137);
+  margin: 10px auto; /* Center align */
+  cursor: pointer; /* Indicates this is clickable */
+  user-select: none; /* Prevents text selection */
+  transition: transform 0.3s ease; /* Smooth transition for transform */
+  width: 200px; /* Specific width for button-like appearance */
+  border-radius: 25px; /* Rounded corners for button-like appearance */
+  display: block; /* Necessary for margin auto to work for centering */
+}
+
+.view-upload-toggle-div:hover {
+  transform: scale(1.05); /* Zoom in slightly */
+}
+
+.view-upload-toggle-div:active {
+  transform: scale(0.95); /* Zoom out slightly when clicked */
+}
+
+/* Updated for a smooth toggling effect */
+.display-ref-uploaded,
+.display-playlist-uploaded {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease, visibility 0.5s;
+}
+
+.display-ref-uploaded.show,
+.display-playlist-uploaded.show {
+  max-height: 500px; /* Adjust as necessary */
+  opacity: 1;
+  visibility: visible;
+}
